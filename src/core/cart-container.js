@@ -8,4 +8,14 @@ function CartContainer(props) {
  );
 }
 
+const mapStateToProps = state => {
+    return {
+
+    }
+}
+const mapDispatchToProps = dispach => {
+    return {
+        
+    }
+}
 export default CartContainer;
