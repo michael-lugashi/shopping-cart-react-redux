@@ -3,6 +3,13 @@ import CartItem from './cartItem';
 import { connect } from 'react-redux';
 
 function CartContainer({ cart }) {
+ const total = () => {
+  let total = 0;
+  for (const { inventory, price } of cart) {
+   total += inventory * price;
+  }
+  return total.toFixed(2);
+ };
  return (
   <div>
    <h2>Cart</h2>
@@ -12,6 +19,8 @@ function CartContainer({ cart }) {
      <CartItem key={id} title={title} price={price} inventory={inventory} />
     );
    })}
+   <br/>
+   {`Total: $${total()}`}
   </div>
  );
 }

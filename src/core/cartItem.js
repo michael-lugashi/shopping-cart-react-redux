@@ -1,13 +1,13 @@
 import React from 'react';
 
 function CartItem({ title, price, inventory }) {
- return (
+
+ return inventory ? (
   <div>
-      {console.log(inventory)}
    {title} - &#36;{price}
-   {inventory ? ` x ${inventory} ` : null}
+   {` x ${inventory} `}
   </div>
- );
+ ) : null;
 }
 
 export default CartItem;
