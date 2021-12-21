@@ -7,12 +7,12 @@ function ProductContainer({ products, _addToCart }) {
  return (
   <div>
    <h2>Products</h2>
+   {console.log(products)}
    {products.map((product, i) => {
     const { id, title, price, inventory } = product;
     return (
      <div key={i}>
-      <ProductItem key={id} title={title} price={price} inventory={inventory} />
-      <button onClick={_addToCart}>add</button>
+      <ProductItem id={id} key={id} title={title} price={price} inventory={inventory} />
      </div>
     );
    })}
@@ -24,11 +24,12 @@ const mapStateToProps = (state) => {
   products: state.products,
  };
 };
-const mapDispatchToProps = (dispach) => {
- return {
-  _addToCart: (id) => dispach(addToCart(id)),
- };
-};
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProductContainer);
+// const mapDispatchToProps = (dispach) => {
+//  return {
+//   _addToCart: (id) => dispach(addToCart(id)),
+//  };
+// };
+
+export default connect(mapStateToProps)(ProductContainer);
 // export default ProductContainer;

@@ -2,14 +2,17 @@ import { ADD_TO_CART } from './action-types';
 import products from '../model/products';
 
 const productReducer = (state = products, action) => {
- console.log(action);
-
- switch (action.type) {
+ const { type, productId } = action;
+ switch (type) {
   case ADD_TO_CART:
-   return {
-    state
-   };
-
+   const newCart = state.map((product) => {
+    const alteredProduct = { ...product };
+    if (product.id === productId) {
+     alteredProduct.inventory--;
+    }
+    return alteredProduct;
+   });
+   return newCart;
   default:
    return state;
  }
