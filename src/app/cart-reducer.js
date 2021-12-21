@@ -1,4 +1,6 @@
-const cartReducer = (state = {}, action) => {
+import cartProducts from "../model/cartProducts";
+
+const cartReducer = (state = cartProducts, action) => {
  switch (action.type) {
   case '1':
    break;

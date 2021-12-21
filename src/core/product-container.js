@@ -1,27 +1,32 @@
 import React from 'react';
-import productItem from './productItem';
+import ProductItem from './productItem';
 import { addToCart } from '../app/actions';
 import { connect } from 'react-redux';
 
-function ProductContainer({ products }) {
+function ProductContainer({ products, _addToCart }) {
  return (
   <div>
    <h2>Products</h2>
-   {console.log(products)}
-   {/* {products.map((product) => {
-    return <productItem product={product} />;
-   })} */}
+   {products.map((product, i) => {
+    const { id, title, price, inventory } = product;
+    return (
+     <div key={i}>
+      <ProductItem key={id} title={title} price={price} inventory={inventory} />
+      <button onClick={_addToCart}>add</button>
+     </div>
+    );
+   })}
   </div>
  );
 }
 const mapStateToProps = (state) => {
  return {
-  products: state,
+  products: state.products,
  };
 };
 const mapDispatchToProps = (dispach) => {
  return {
-  addToCart: () => dispach(addToCart()),
+  _addToCart: (id) => dispach(addToCart(id)),
  };
 };
 

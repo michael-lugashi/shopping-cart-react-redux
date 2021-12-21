@@ -4,7 +4,7 @@ import * as types from './action-types';
 
 export const addToCart = (productId) => {
  return {
-  types: types.ADD_TO_CART,
+  type: types.ADD_TO_CART,
   productId,
  };
 };
